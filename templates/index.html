@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fi Finance Assistant</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Fi Money</h3>
+                <p>MCP Finance Assistant</p>
+            </div>
+
+            <div class="user-profile">
+                <div class="avatar">
+                    <i class="fas fa-user-circle fa-3x"></i>
+                </div>
+                <div class="user-info">
+                    <h5>{{ user_info.name }}</h5>
+                    <p>{{ user_info.occupation }}</p>
+                </div>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#" id="dashboard-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="chat-link">
+                        <i class="fas fa-comments"></i>
+                        Chat with AI
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="investments-link">
+                        <i class="fas fa-chart-line"></i>
+                        Investments
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="spending-link">
+                        <i class="fas fa-wallet"></i>
+                        Spending
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="loans-link">
+                        <i class="fas fa-landmark"></i>
+                        Loans
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="goals-link">
+                        <i class="fas fa-bullseye"></i>
+                        Goals
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="#" id="export-data-link">
+                    <i class="fas fa-download"></i>
+                    Export Data
+                </a>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Dashboard -->
+            <div id="dashboard" class="content-section active">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="page-header">
+                                <h1>Dashboard</h1>
+                                <p class="last-updated">Last updated: {{ user_info.last_updated if user_info.last_updated else "July 9, 2025" }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <div class="card summary-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Bank Balance</h5>
+                                    <h2 class="card-value">₹{{ "{:,.2f}".format(financial_summary.bank_balance) }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card summary-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Net Worth</h5>
+                                    <h2 class="card-value">₹{{ "{:,.2f}".format(financial_summary.net_worth) }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card summary-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Investments</h5>
+                                    <h2 class="card-value">₹{{ "{:,.2f}".format(financial_summary.total_investments) }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card summary-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Credit Score</h5>
+                                    <h2 class="card-value">{{ financial_summary.credit_score }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Net Worth Trend</h5>
+                                    <div id="net-worth-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Recent Transactions</h5>
+                                    <div class="transaction-list">
+                                        {% for transaction in recent_transactions[:5] %}
+                                        <div class="transaction-item">
+                                            <div class="transaction-date">{{ transaction.date }}</div>
+                                            <div class="transaction-desc">{{ transaction.description }}</div>
+                                            <div class="transaction-amount {% if transaction.type == 'credit' %}text-success{% else %}text-danger{% endif %}">
+                                                {% if transaction.type == 'credit' %}+{% else %}-{% endif %}₹{{ "{:,.2f}".format(transaction.amount) }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Recommendations</h5>
+                                    <div class="recommendation-list">
+                                        {% for rec in recommendations %}
+                                        <div class="recommendation-item priority-{{ rec.priority.lower() }}">
+                                            <div class="rec-type">{{ rec.type }}</div>
+                                            <div class="rec-content">
+                                                <h6>{{ rec.title }}</h6>
+                                                <p>{{ rec.description }}</p>
+                                                <p class="rec-impact"><strong>Potential Impact:</strong> {{ rec.potential_impact }}</p>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat with AI -->
+            <div id="chat-section" class="content-section">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="page-header">
+                                <h1>Chat with Fi Money AI Assistant</h1>
+                                <p>Ask questions about your financial data and get personalized insights</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card chat-card">
+                                <div class="card-body">
+                                    <div id="chat-messages" class="chat-messages">
+                                        <div class="message ai">
+                                            <div class="message-content">
+                                                <p>Hello {{ user_info.name }}! I'm your Fi Money AI Assistant. I can help you with personalized financial insights. What would you like to know about your finances?</p>
+                                                <p>You can ask questions like:</p>
+                                                <ul>
+                                                    <li>"How much money will I have at 40?"</li>
+                                                    <li>"How's my net worth growing?"</li>
+                                                    <li>"Can I afford a ₹50L home loan?"</li>
+                                                    <li>"Which SIPs underperformed the market?"</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat-input">
+                                        <input type="text" id="user-input" class="form-control" placeholder="Type your financial question here...">
+                                        <button id="send-button" class="btn btn-primary">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card visualization-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Visualization</h5>
+                                    <div id="visualization-area" class="visualization-placeholder">
+                                        <p>Visualizations will appear here when relevant to your query.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mt-4 suggested-queries-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Suggested Queries</h5>
+                                    <div class="suggested-queries">
+                                        <button class="btn btn-outline-primary query-suggestion">How's my net worth growing?</button>
+                                        <button class="btn btn-outline-primary query-suggestion">Can I afford a ₹50L home loan?</button>
+                                        <button class="btn btn-outline-primary query-suggestion">Which SIPs underperformed the market?</button>
+                                        <button class="btn btn-outline-primary query-suggestion">What will my finances look like at age 40?</button>
+                                        <button class="btn btn-outline-primary query-suggestion">How can I optimize my investments?</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investments Section -->
+            <div id="investments-section" class="content-section">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="page-header">
+                                <h1>Investments</h1>
+                                <p>View and analyze your investment portfolio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Loading investment data...</h5>
+                                    <p>The investments section will be loaded with your portfolio details.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spending Section -->
+            <div id="spending-section" class="content-section">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="page-header">
+                                <h1>Spending</h1>
+                                <p>Track and analyze your spending patterns</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Loading spending data...</h5>
+                                    <p>The spending section will be loaded with your expense details.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loans Section -->
+            <div id="loans-section" class="content-section">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="page-header">
+                                <h1>Loans</h1>
+                                <p>Manage and optimize your loans</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Loading loan data...</h5>
+                                    <p>The loans section will be loaded with your loan details.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goals Section -->
+            <div id="goals-section" class="content-section">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="page-header">
+                                <h1>Financial Goals</h1>
+                                <p>Track progress towards your financial goals</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Loading goals data...</h5>
+                                    <p>The goals section will be loaded with your financial goals details.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Initialize the net worth chart
+        document.addEventListener("DOMContentLoaded", function() {
+            var netWorthChartData = {{ net_worth_chart | safe }};
+            Plotly.newPlot('net-worth-chart', netWorthChartData.data, netWorthChartData.layout);
+        });
+    </script>
+</body>
+</html>

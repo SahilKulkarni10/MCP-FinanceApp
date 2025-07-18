@@ -1,0 +1,463 @@
+{
+    "user": {
+        "id": "usr_123456789",
+        "name": "Sahil Kulkarni",
+        "email": "sahil.kulkarni@example.com",
+        "age": 32,
+        "occupation": "Software Engineer",
+        "risk_profile": "Moderate"
+    },
+    "accounts": {
+        "bank_accounts": [
+            {
+                "id": "acct_12345",
+                "bank_name": "HDFC Bank",
+                "account_type": "Savings",
+                "balance": 125000.00,
+                "currency": "INR",
+                "last_updated": "2025-07-08T18:30:00Z"
+            },
+            {
+                "id": "acct_67890",
+                "bank_name": "ICICI Bank",
+                "account_type": "Salary",
+                "balance": 45000.00,
+                "currency": "INR",
+                "last_updated": "2025-07-08T18:30:00Z"
+            }
+        ],
+        "credit_cards": [
+            {
+                "id": "cc_12345",
+                "bank_name": "HDFC Bank",
+                "card_type": "Platinum",
+                "credit_limit": 300000.00,
+                "outstanding_balance": 12500.00,
+                "available_credit": 287500.00,
+                "statement_date": "2025-07-01",
+                "due_date": "2025-07-15",
+                "min_payment_due": 625.00,
+                "currency": "INR",
+                "last_updated": "2025-07-08T18:30:00Z",
+                "recent_transactions": [
+                    {
+                        "date": "2025-07-07",
+                        "description": "Amazon.in",
+                        "amount": 3499.00,
+                        "category": "Shopping"
+                    },
+                    {
+                        "date": "2025-07-05",
+                        "description": "Swiggy",
+                        "amount": 850.00,
+                        "category": "Food & Dining"
+                    }
+                ]
+            }
+        ]
+    },
+    "investments": {
+        "mutual_funds": [
+            {
+                "id": "mf_12345",
+                "name": "Axis Bluechip Fund Direct Growth",
+                "category": "Equity - Large Cap",
+                "current_value": 325000.00,
+                "invested_amount": 250000.00,
+                "units": 4578.652,
+                "nav": 71.01,
+                "returns": {
+                    "absolute": 30.00,
+                    "1y": 12.5,
+                    "3y": 15.2,
+                    "5y": 14.8
+                },
+                "sip": {
+                    "amount": 10000.00,
+                    "frequency": "Monthly",
+                    "active": true,
+                    "next_date": "2025-08-05"
+                },
+                "last_updated": "2025-07-08T18:30:00Z"
+            },
+            {
+                "id": "mf_67890",
+                "name": "Mirae Asset Emerging Bluechip Fund Direct Growth",
+                "category": "Equity - Mid Cap",
+                "current_value": 280000.00,
+                "invested_amount": 200000.00,
+                "units": 3250.123,
+                "nav": 86.15,
+                "returns": {
+                    "absolute": 40.00,
+                    "1y": 18.2,
+                    "3y": 16.5,
+                    "5y": 17.8
+                },
+                "sip": {
+                    "amount": 5000.00,
+                    "frequency": "Monthly",
+                    "active": true,
+                    "next_date": "2025-08-10"
+                },
+                "last_updated": "2025-07-08T18:30:00Z"
+            },
+            {
+                "id": "mf_13579",
+                "name": "ICICI Prudential Corporate Bond Fund Direct Growth",
+                "category": "Debt - Corporate Bond",
+                "current_value": 200000.00,
+                "invested_amount": 180000.00,
+                "units": 7851.236,
+                "nav": 25.47,
+                "returns": {
+                    "absolute": 11.11,
+                    "1y": 7.5,
+                    "3y": 8.2,
+                    "5y": 7.8
+                },
+                "sip": {
+                    "amount": 0.00,
+                    "frequency": "None",
+                    "active": false,
+                    "next_date": null
+                },
+                "last_updated": "2025-07-08T18:30:00Z"
+            }
+        ],
+        "stocks": [
+            {
+                "id": "stk_12345",
+                "symbol": "RELIANCE",
+                "name": "Reliance Industries Ltd",
+                "exchange": "NSE",
+                "quantity": 50,
+                "average_buy_price": 2400.00,
+                "current_price": 2950.00,
+                "current_value": 147500.00,
+                "invested_amount": 120000.00,
+                "profit_loss": 27500.00,
+                "profit_loss_percentage": 22.92,
+                "sector": "Energy",
+                "last_updated": "2025-07-08T18:30:00Z"
+            },
+            {
+                "id": "stk_67890",
+                "symbol": "INFY",
+                "name": "Infosys Ltd",
+                "exchange": "NSE",
+                "quantity": 100,
+                "average_buy_price": 1500.00,
+                "current_price": 1850.00,
+                "current_value": 185000.00,
+                "invested_amount": 150000.00,
+                "profit_loss": 35000.00,
+                "profit_loss_percentage": 23.33,
+                "sector": "Information Technology",
+                "last_updated": "2025-07-08T18:30:00Z"
+            }
+        ],
+        "epf": {
+            "id": "epf_12345",
+            "uan": "100123456789",
+            "employer": "TechSolutions Ltd",
+            "balance": 650000.00,
+            "employee_contribution": 340000.00,
+            "employer_contribution": 310000.00,
+            "monthly_contribution": 7500.00,
+            "interest_rate": 8.15,
+            "last_updated": "2025-06-30T18:30:00Z"
+        },
+        "ppf": {
+            "id": "ppf_12345",
+            "account_number": "PPFAC00123456",
+            "balance": 320000.00,
+            "maturity_date": "2031-03-31",
+            "interest_rate": 7.1,
+            "yearly_contribution": 150000.00,
+            "last_contribution_date": "2025-03-25",
+            "last_updated": "2025-07-01T18:30:00Z"
+        },
+        "fixed_deposits": [
+            {
+                "id": "fd_12345",
+                "bank_name": "HDFC Bank",
+                "principal_amount": 200000.00,
+                "current_value": 216000.00,
+                "interest_rate": 8.0,
+                "start_date": "2024-07-01",
+                "maturity_date": "2025-07-01",
+                "term": "1 year",
+                "interest_payout": "On Maturity",
+                "last_updated": "2025-07-08T18:30:00Z"
+            }
+        ]
+    },
+    "loans": {
+        "home_loan": {
+            "id": "hl_12345",
+            "lender": "HDFC Bank",
+            "original_amount": 5000000.00,
+            "outstanding_amount": 3250000.00,
+            "interest_rate": 8.5,
+            "emi": 45000.00,
+            "start_date": "2020-01-15",
+            "end_date": "2035-01-15",
+            "tenure": 180,
+            "remaining_tenure": 114,
+            "last_payment_date": "2025-07-05",
+            "next_payment_date": "2025-08-05",
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        "personal_loan": {
+            "id": "pl_12345",
+            "lender": "ICICI Bank",
+            "original_amount": 500000.00,
+            "outstanding_amount": 200000.00,
+            "interest_rate": 12.5,
+            "emi": 15000.00,
+            "start_date": "2023-05-10",
+            "end_date": "2026-05-10",
+            "tenure": 36,
+            "remaining_tenure": 10,
+            "last_payment_date": "2025-07-05",
+            "next_payment_date": "2025-08-05",
+            "last_updated": "2025-07-08T18:30:00Z"
+        }
+    },
+    "credit_score": {
+        "score": 785,
+        "provider": "CIBIL",
+        "last_updated": "2025-06-15T18:30:00Z",
+        "factors": {
+            "positive": [
+                "Regular loan repayments",
+                "Low credit utilization",
+                "Long credit history"
+            ],
+            "negative": [
+                "High number of credit inquiries in last 6 months"
+            ]
+        },
+        "history": [
+            {"date": "2025-06-15", "score": 785},
+            {"date": "2025-03-15", "score": 780},
+            {"date": "2024-12-15", "score": 775},
+            {"date": "2024-09-15", "score": 760},
+            {"date": "2024-06-15", "score": 755}
+        ]
+    },
+    "insurance": {
+        "health_insurance": {
+            "id": "hi_12345",
+            "insurer": "Star Health",
+            "policy_number": "SH123456789",
+            "type": "Family Floater",
+            "covered_members": ["Self", "Spouse"],
+            "sum_insured": 1000000.00,
+            "premium": 25000.00,
+            "start_date": "2025-01-01",
+            "end_date": "2025-12-31",
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        "term_insurance": {
+            "id": "ti_12345",
+            "insurer": "HDFC Life",
+            "policy_number": "HL123456789",
+            "sum_insured": 20000000.00,
+            "premium": 18000.00,
+            "premium_frequency": "Annual",
+            "start_date": "2022-05-15",
+            "end_date": "2052-05-15",
+            "nominee": "Spouse",
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        "vehicle_insurance": {
+            "id": "vi_12345",
+            "insurer": "ICICI Lombard",
+            "policy_number": "IL123456789",
+            "vehicle": "Honda City",
+            "type": "Comprehensive",
+            "sum_insured": 800000.00,
+            "premium": 15000.00,
+            "start_date": "2025-04-01",
+            "end_date": "2026-03-31",
+            "last_updated": "2025-07-08T18:30:00Z"
+        }
+    },
+    "spending": {
+        "monthly_summary": {
+            "total_income": 150000.00,
+            "total_expense": 95000.00,
+            "savings": 55000.00,
+            "savings_percentage": 36.67,
+            "month": "June 2025",
+            "categories": {
+                "Housing": 45000.00,
+                "Food & Dining": 15000.00,
+                "Transportation": 8000.00,
+                "Shopping": 12000.00,
+                "Entertainment": 5000.00,
+                "Utilities": 4000.00,
+                "Healthcare": 3000.00,
+                "Others": 3000.00
+            },
+            "last_updated": "2025-07-05T18:30:00Z"
+        },
+        "yearly_summary": {
+            "total_income": 1750000.00,
+            "total_expense": 1150000.00,
+            "savings": 600000.00,
+            "savings_percentage": 34.29,
+            "year": "2024-2025",
+            "categories": {
+                "Housing": 540000.00,
+                "Food & Dining": 180000.00,
+                "Transportation": 96000.00,
+                "Shopping": 120000.00,
+                "Entertainment": 60000.00,
+                "Utilities": 48000.00,
+                "Healthcare": 40000.00,
+                "Others": 66000.00
+            },
+            "last_updated": "2025-04-05T18:30:00Z"
+        },
+        "recent_transactions": [
+            {
+                "date": "2025-07-08",
+                "description": "Salary Credit",
+                "amount": 150000.00,
+                "type": "credit",
+                "category": "Income",
+                "account_id": "acct_67890"
+            },
+            {
+                "date": "2025-07-07",
+                "description": "Amazon.in",
+                "amount": 3499.00,
+                "type": "debit",
+                "category": "Shopping",
+                "account_id": "cc_12345"
+            },
+            {
+                "date": "2025-07-06",
+                "description": "HDFC Home Loan EMI",
+                "amount": 45000.00,
+                "type": "debit",
+                "category": "Housing",
+                "account_id": "acct_12345"
+            },
+            {
+                "date": "2025-07-05",
+                "description": "Swiggy",
+                "amount": 850.00,
+                "type": "debit",
+                "category": "Food & Dining",
+                "account_id": "cc_12345"
+            },
+            {
+                "date": "2025-07-05",
+                "description": "ICICI Personal Loan EMI",
+                "amount": 15000.00,
+                "type": "debit",
+                "category": "EMI",
+                "account_id": "acct_12345"
+            }
+        ]
+    },
+    "financial_goals": [
+        {
+            "id": "goal_12345",
+            "name": "Home Purchase",
+            "target_amount": 10000000.00,
+            "current_savings": 2500000.00,
+            "monthly_contribution": 50000.00,
+            "target_date": "2028-12-31",
+            "progress_percentage": 25.00,
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        {
+            "id": "goal_67890",
+            "name": "Retirement",
+            "target_amount": 50000000.00,
+            "current_savings": 5000000.00,
+            "monthly_contribution": 40000.00,
+            "target_date": "2050-12-31",
+            "progress_percentage": 10.00,
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        {
+            "id": "goal_13579",
+            "name": "Child's Education",
+            "target_amount": 5000000.00,
+            "current_savings": 1000000.00,
+            "monthly_contribution": 20000.00,
+            "target_date": "2035-06-30",
+            "progress_percentage": 20.00,
+            "last_updated": "2025-07-08T18:30:00Z"
+        }
+    ],
+    "net_worth": {
+        "total_assets": 2432500.00,
+        "total_liabilities": 3462500.00,
+        "net_worth": -1030000.00,
+        "history": [
+            {"date": "2025-07-08", "net_worth": -1030000.00},
+            {"date": "2025-06-08", "net_worth": -1080000.00},
+            {"date": "2025-05-08", "net_worth": -1130000.00},
+            {"date": "2025-04-08", "net_worth": -1190000.00},
+            {"date": "2025-03-08", "net_worth": -1240000.00},
+            {"date": "2025-02-08", "net_worth": -1300000.00},
+            {"date": "2025-01-08", "net_worth": -1350000.00},
+            {"date": "2024-12-08", "net_worth": -1400000.00},
+            {"date": "2024-11-08", "net_worth": -1450000.00},
+            {"date": "2024-10-08", "net_worth": -1500000.00},
+            {"date": "2024-09-08", "net_worth": -1550000.00},
+            {"date": "2024-08-08", "net_worth": -1600000.00}
+        ],
+        "breakdown": {
+            "assets": {
+                "Bank Accounts": 170000.00,
+                "Investments": 1137500.00,
+                "EPF": 650000.00,
+                "PPF": 320000.00,
+                "Fixed Deposits": 216000.00
+            },
+            "liabilities": {
+                "Home Loan": 3250000.00,
+                "Personal Loan": 200000.00,
+                "Credit Card": 12500.00
+            }
+        },
+        "last_updated": "2025-07-08T18:30:00Z"
+    },
+    "recommendations": [
+        {
+            "id": "rec_12345",
+            "type": "Investment",
+            "title": "Increase SIP in Axis Bluechip Fund",
+            "description": "Based on your risk profile and consistent returns, consider increasing your SIP amount in Axis Bluechip Fund.",
+            "potential_impact": "An additional monthly investment of ₹5,000 could grow to approximately ₹8,50,000 in 10 years (assuming 12% annual returns).",
+            "priority": "Medium",
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        {
+            "id": "rec_67890",
+            "type": "Debt",
+            "title": "Prepay Personal Loan",
+            "description": "With your current savings rate, consider making a partial prepayment on your personal loan to save on interest costs.",
+            "potential_impact": "A prepayment of ₹100,000 could save approximately ₹25,000 in interest payments over the remaining loan tenure.",
+            "priority": "High",
+            "last_updated": "2025-07-08T18:30:00Z"
+        },
+        {
+            "id": "rec_13579",
+            "type": "Insurance",
+            "title": "Increase Health Insurance Coverage",
+            "description": "Your current health insurance coverage of ₹10 lakhs may be insufficient for your family. Consider upgrading to at least ₹25 lakhs coverage.",
+            "potential_impact": "Additional coverage would provide better financial protection against medical emergencies, with an estimated premium increase of ₹10,000 annually.",
+            "priority": "Medium",
+            "last_updated": "2025-07-08T18:30:00Z"
+        }
+    ]
+}
